@@ -22,7 +22,7 @@ test('responds to requests', (t) => {
       t.equal(response.statusCode, 200);
       // Assert content checks
       t.notEqual(body.indexOf("<title>VisionZeroWeb</title>"), -1);
-      t.notEqual(body.indexOf("Getting Started with Node on Heroku"), -1);
+      t.notEqual(body.indexOf("Vision Zero Web App"), -1);
     });
   });
 });
