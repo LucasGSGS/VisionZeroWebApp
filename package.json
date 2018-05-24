@@ -5,6 +5,16 @@
   "engines": {
     "node": "8.9.1"
   },
+  "author": {
+  "name": "Shuo Gong",
+  "email": "shuog2@illinois.edu"
+},
+"contributors": [
+  {
+    "name": "Ziwei Liu",
+    "email": "ziweil2@illinois.edu"
+  }
+],
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
