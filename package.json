@@ -1,5 +1,5 @@
 {
-  "name": "node-js-getting-started",
+  "name": "VisionZeroWeb",
   "version": "0.3.0",
   "description": "A sample Node.js app using Express 4",
   "engines": {
@@ -20,12 +20,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/heroku/node-js-getting-started"
+    "url": "https://github.com/LucasGSGS/VisionZeroWebApp"
   },
   "keywords": [
     "node",
     "heroku",
     "express"
+    "visionzero"
+    "osmnx"
   ],
   "license": "MIT"
 }
