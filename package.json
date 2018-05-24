@@ -35,8 +35,8 @@
   "keywords": [
     "node",
     "heroku",
-    "express"
-    "visionzero"
+    "express",
+    "visionzero",
     "osmnx"
   ],
   "license": "MIT"
