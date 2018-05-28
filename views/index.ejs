@@ -8,12 +8,17 @@
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.css' rel='stylesheet' />
     <style>
         body { margin:0; padding:0; }
-        #map { position:absolute; top:20px; bottom:0; width:100%; }
+        #map { position:absolute; top:80px; bottom:0; width:100%; }
     </style>
 </head>
 <body>
-  <input type="text" id='lat'>
-  <input type="text" id='lon'>
+  <form action="/" method="post">
+  Longitude:<br>
+  <input type="text" name="coordinate[lng]" id='lat'><br>
+  Latitude:<br>
+  <input type="text" name="coordinate[lat]" id='lon'>
+  </form>
+
 
   <style type='text/css'>
       #info {

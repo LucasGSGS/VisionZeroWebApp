@@ -8,6 +8,8 @@ const app = express();
 // set the view engine to ejs
 app.set('view engine', 'ejs');
 
+// app.use(express.bodyParser());
+
 // make express look in the public directory for assets (css/js/img)
 app.use(express.static(__dirname + '/public'));
 
@@ -21,6 +23,12 @@ app.get("/", function (req, res) {
  // ejs render automatically looks in the views folder
  res.render('index');
 });
+
+// app.post('/', function(request, response){
+//     console.log(request.body.coordinate.lng);
+//     console.log(request.body.coordinate.lat);
+// });
+
 
 //Start Server
 app.listen(app.get('port'), function() {
