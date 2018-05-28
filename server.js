@@ -17,7 +17,9 @@ app.set('port', (process.env.PORT || 4000));
 
 // set the home page route
 app.get("/", function (req, res) {
- res.send("Hey, I am responding to your request!");
+ // res.send("Hey, I am responding to your request!");
+ // ejs render automatically looks in the views folder
+ res.render('index');
 });
 
 //Start Server
