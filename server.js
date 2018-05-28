@@ -5,6 +5,9 @@ const app = express();
 // const _ = require('loadash');
 // const morgan = require('morgan');
 
+// set the view engine to ejs
+app.set('view engine', 'ejs');
+
 // set the port of our application
 // process.env.PORT lets the port be set by Heroku
 app.set('port', (process.env.PORT || 4000));
