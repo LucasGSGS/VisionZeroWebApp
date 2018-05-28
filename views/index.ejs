@@ -92,17 +92,17 @@ map.on('mousemove', function (e) {
 
 map.on('click', function(e) {
   // get lat/lon of click
-  var clickLat = e.lngLat.lat();
-  var clickLon = e.latLng.lng();
+  var clickLat = e.lngLat["lat"];
+  var clickLon = e.lngLat["lng"];
 
   // show in input box
   document.getElementById("lat").value = clickLat;
   document.getElementById("lon").value = clickLon;
 
-  var marker = new google.maps.Marker({
-        position: new google.maps.LatLng(clickLat,clickLon),
-        map: map
-  });
+  // var marker = new google.maps.Marker({
+  //       position: new google.maps.LatLng(clickLat,clickLon),
+  //       map: map
+  // });
 });
 
 
