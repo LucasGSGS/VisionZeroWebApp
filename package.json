@@ -1,43 +1,33 @@
 {
-  "name": "VisionZeroWeb",
-  "version": "0.3.0",
-  "description": "A sample Node.js app using Express 4",
-  "engines": {
-    "node": "8.9.1"
-  },
-  "author": {
-  "name": "Shuo Gong",
-  "email": "shuog2@illinois.edu"
-},
-"contributors": [
-  {
-    "name": "Ziwei Liu",
-    "email": "ziweil2@illinois.edu"
-  }
-],
+  "name": "visionzerowebapp",
+  "version": "1.0.0",
+  "description": "A web app based on nodejs and expressjs as backend.",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "node test.js"
-  },
-  "dependencies": {
-    "ejs": "^2.5.6",
-    "express": "^4.15.2"
-  },
-  "devDependencies": {
-    "request": "^2.81.0",
-    "tape": "^4.7.0"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node .",
+    "eslint": "eslint"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/LucasGSGS/VisionZeroWebApp"
+    "url": "git+https://github.com/LucasGSGS/VisionZeroWebApp.git"
   },
   "keywords": [
-    "node",
-    "heroku",
-    "express",
+    "oxmns",
     "visionzero",
-    "osmnx"
+    "nodejs"
   ],
-  "license": "MIT"
+  "author": "Shuo Gong",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LucasGSGS/VisionZeroWebApp/issues"
+  },
+  "homepage": "https://github.com/LucasGSGS/VisionZeroWebApp#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "loadash": "^1.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1"
+  }
 }
