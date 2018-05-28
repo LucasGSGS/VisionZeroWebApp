@@ -8,18 +8,20 @@
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.css' rel='stylesheet' />
     <style>
         body { margin:0; padding:0; }
-        #map { position:absolute; top:0; bottom:0; width:100%; }
+        #map { position:absolute; top:20px; bottom:0; width:100%; }
     </style>
 </head>
 <body>
+  <input type="text" id='lat'>
+  <input type="text" id='lon'>
 
   <style type='text/css'>
       #info {
           display: block;
           position: relative;
           margin: 0px auto;
-          width: 50%;
-          padding: 10px;
+          width: 45%;
+          padding: 2px;
           border: none;
           border-radius: 3px;
           font-size: 12px;
@@ -29,6 +31,8 @@
       }
   </style>
   <div id='map'></div>
+  <span id='lat'></span>
+  <span id='lon'></span>
   <pre id='info'></pre>
 
 
@@ -85,6 +89,23 @@ map.on('mousemove', function (e) {
         JSON.stringify(e.lngLat);
 
 });
+
+map.on('click', function(e) {
+  // get lat/lon of click
+  var clickLat = e.lngLat.lat();
+  var clickLon = e.latLng.lng();
+
+  // show in input box
+  document.getElementById("lat").value = clickLat;
+  document.getElementById("lon").value = clickLon;
+
+  var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(clickLat,clickLon),
+        map: map
+  });
+});
+
+
 </script>
 
 </body>
