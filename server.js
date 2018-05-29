@@ -68,7 +68,7 @@ app.post('/myaction', function (req, res) {
     // var obj = JSON.parse(fs.readFileSync('output.json', 'utf8'));
     // console.log(JSON.stringify(obj));
   });
-
+  // res.end();
 
   // console.log(obj);
 
