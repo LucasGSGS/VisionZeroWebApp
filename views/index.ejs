@@ -12,13 +12,14 @@
     </style>
 </head>
 <body>
-  <form action="myaction" method="post">
+  <form action="myaction" method="post" id="form1">
   Latitude:<br>
   <input type="text" name="coordinate[lat]" id='lat'><br>
   Longitude:<br>
   <input type="text" name="coordinate[lng]" id='lng'>
-  <input type="submit" value="OK">
   </form>
+  <button type="submit" form="form1" value="Submit">Submit</button>
+
 
 
   <style type='text/css'>
