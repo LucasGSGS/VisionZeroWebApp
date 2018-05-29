@@ -8,8 +8,8 @@ const app = express();
 // set the view engine to ejs
 app.set('view engine', 'ejs');
 
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
 // make express look in the public directory for assets (css/js/img)
 app.use(express.static(__dirname + '/public'));
 
@@ -30,17 +30,21 @@ app.get("/", function (req, res) {
 // });
 
 // app.post('/myaction', function(req, res) {
-//   res.send('You sent the longitude "' + req.coordinate.lng + '".');
+//   res.send('You sent the longitude "' + req.body.coordinate.lng + '".');
 // });
 
 app.post('/myaction', function (req, res) {
     // res.render('the_template', { name: req.body.name });
-    let inputLng = req.body.coordinate.lng;
-    let inputLat = req.body.coordinate.lat;
-    console.log(inputLng);
-    console.log(inputLat);
-
+    // let inputLng = req.body.coordinate.lng;
+    // let inputLat = req.body.coordinate.lat;
+    // console.log(inputLng);
+    // console.log(inputLat);
+  res.send('Longitude: ' + req.body.coordinate.lng + "\n" + 'Latitude: ' + req.body.coordinate.lat);
 });
+
+// app.get("/myaction", function (req, res) {
+//   res.status(200).send(req);
+// });
 
 //Start Server
 app.listen(app.get('port'), function() {
