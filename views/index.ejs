@@ -13,10 +13,10 @@
 </head>
 <body>
   <form action="myaction" method="post">
-  Longitude:<br>
-  <input type="text" name="coordinate[lng]" id='lat'><br>
   Latitude:<br>
-  <input type="text" name="coordinate[lat]" id='lon'>
+  <input type="text" name="coordinate[lat]" id='lat'><br>
+  Longitude:<br>
+  <input type="text" name="coordinate[lng]" id='lng'>
   <input type="submit" value="OK">
   </form>
 
@@ -38,7 +38,7 @@
   </style>
   <div id='map'></div>
   <span id='lat'></span>
-  <span id='lon'></span>
+  <span id='lng'></span>
   <pre id='info'></pre>
 
 
@@ -103,7 +103,7 @@ map.on('click', function(e) {
 
   // show in input box
   document.getElementById("lat").value = clickLat;
-  document.getElementById("lon").value = clickLon;
+  document.getElementById("lng").value = clickLon;
 
   var marker = new mapboxgl.Marker()
     .setLngLat([clickLon, clickLat])

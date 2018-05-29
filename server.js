@@ -2,6 +2,8 @@ const express = require('express');
 const router = require('express').Router();
 const bodyParser = require('body-parser');
 const app = express();
+var fs = require('fs');
+
 // const _ = require('loadash');
 // const morgan = require('morgan');
 
@@ -35,11 +37,41 @@ app.get("/", function (req, res) {
 
 app.post('/myaction', function (req, res) {
     // res.render('the_template', { name: req.body.name });
-    // let inputLng = req.body.coordinate.lng;
-    // let inputLat = req.body.coordinate.lat;
-    // console.log(inputLng);
-    // console.log(inputLat);
-  res.send('Longitude: ' + req.body.coordinate.lng + "\n" + 'Latitude: ' + req.body.coordinate.lat);
+    let inputLng = req.body.coordinate.lng;
+    let inputLat = req.body.coordinate.lat;
+    console.log(inputLng);
+    console.log(inputLat);
+  // res.send('Longitude: ' + req.body.coordinate.lng + "\n" + 'Latitude: ' + req.body.coordinate.lat);
+
+  var PythonShell = require('python-shell');
+
+  var options = {
+    mode: 'text',
+    pythonPath: '/Users/shuogong/anaconda3/envs/osmnx/bin/python3',
+    pythonOptions: ['-u'], // get print results in real-time
+    scriptPath: '/Users/shuogong/VisionZeroWebApp/',
+    args: [inputLng, inputLat]
+  };
+
+  PythonShell.run('my_script.py', options, function (err, results) {
+    if (err) throw err;
+    // results is an array consisting of messages collected during execution
+    var obj;
+    fs.readFile('output.json', 'utf8', function (err, data) {
+      if (err) throw err;
+      obj = JSON.parse(data);
+      // console.log(JSON.stringify(obj));
+      console.log('The nearest node latlng: ')
+      console.log(JSON.stringify(obj));
+
+    });
+    // var obj = JSON.parse(fs.readFileSync('output.json', 'utf8'));
+    // console.log(JSON.stringify(obj));
+  });
+
+
+  // console.log(obj);
+
 });
 
 // app.get("/myaction", function (req, res) {
