@@ -109,6 +109,12 @@ map.on('click', function(e) {
   document.getElementById("lat").value = clickLat;
   document.getElementById("lng").value = clickLon;
 
+  map.flyTo({
+    center: [clickLon, clickLat],
+    zoom: 12.5
+  });
+
+
   var marker = new mapboxgl.Marker()
     .setLngLat([clickLon, clickLat])
     .addTo(map);
