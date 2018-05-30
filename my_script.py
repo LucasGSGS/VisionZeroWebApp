@@ -6,9 +6,10 @@ import osmnx as ox
 import json
 import os
 
+y = sys.argv[1].strip().split(",")
 
 Manhattan_Graph = ox.graph_from_place('Manhattan Island, New York City, New York, USA', network_type='drive')
-point = (float(sys.argv[2]), float(sys.argv[1]))
+point = (float(y[1]), float(y[0]))
 nearest_node_id = ox.get_nearest_node(Manhattan_Graph, point)
 lat = Manhattan_Graph.node[nearest_node_id]['y']
 lng = Manhattan_Graph.node[nearest_node_id]['x']
@@ -19,7 +20,7 @@ with open("/Users/shuogong/VisionZeroWebApp/output.json", "w") as f:
 print(str(data))
 
 # point = (float(sys.argv[2]), float(sys.argv[1]))
-# print(str(point))
+# print(float(y[1]), float(y[0]))
 
 # To print out the JSON string (which you could then hardcode into the JS)
 # json.dumps(data)

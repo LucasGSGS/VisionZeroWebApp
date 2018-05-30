@@ -39,10 +39,12 @@ app.get("/", function (req, res) {
 
 app.post('/myaction', function (req, res) {
     // res.render('the_template', { name: req.body.name });
-    let inputLng = req.body.coordinate.lng;
-    let inputLat = req.body.coordinate.lat;
-    console.log(inputLng);
-    console.log(inputLat);
+    // let inputLng = req.body.coordinate.lng;
+    // let inputLat = req.body.coordinate.lat;
+    // console.log(inputLng);
+    // console.log(inputLat);
+    let inputlatlng = req.body.origin
+    console.log(inputlatlng)
   // res.send('Longitude: ' + req.body.coordinate.lng + "\n" + 'Latitude: ' + req.body.coordinate.lat);
 
   var PythonShell = require('python-shell');
@@ -52,7 +54,7 @@ app.post('/myaction', function (req, res) {
     pythonPath: '/Users/shuogong/anaconda3/envs/osmnx/bin/python3',
     pythonOptions: ['-u'], // get print results in real-time
     scriptPath: '/Users/shuogong/VisionZeroWebApp/',
-    args: [inputLng, inputLat]
+    args: [inputlatlng]
   };
 
   PythonShell.run('my_script.py', options, function (err, results) {
