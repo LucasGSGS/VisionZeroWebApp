@@ -23,7 +23,7 @@ app.set('port', (process.env.PORT || 4000));
 app.get("/", function (req, res) {
  // res.send("Hey, I am responding to your request!");
  // ejs render automatically looks in the views folder
- res.render('index');
+ res.render('index', {id: 'id placeholder'});
 });
 
 // app.post('/', function(request, response){
@@ -65,8 +65,7 @@ app.post('/myaction', function (req, res) {
       console.log(JSON.stringify(obj));
       console.log(JSON.stringify(obj));
       console.log(obj['id']);
-      // res.render('index', {id: obj['id']})
-      res.redirect('/'); 
+      res.render('index', {id: obj['id']})
 
 
     });
