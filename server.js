@@ -63,11 +63,17 @@ app.post('/myaction', function (req, res) {
       // console.log(JSON.stringify(obj));
       console.log('The nearest node latlng: ')
       console.log(JSON.stringify(obj));
+      console.log(JSON.stringify(obj));
+      console.log(obj['id']);
+      // res.render('index', {id: obj['id']})
+      res.redirect('/'); 
+
 
     });
     // var obj = JSON.parse(fs.readFileSync('output.json', 'utf8'));
     // console.log(JSON.stringify(obj));
   });
+
   // res.end();
 
   // console.log(obj);

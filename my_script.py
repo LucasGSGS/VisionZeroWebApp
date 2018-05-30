@@ -12,7 +12,7 @@ point = (float(sys.argv[2]), float(sys.argv[1]))
 nearest_node_id = ox.get_nearest_node(Manhattan_Graph, point)
 lat = Manhattan_Graph.node[nearest_node_id]['y']
 lng = Manhattan_Graph.node[nearest_node_id]['x']
-data = {'latitude': lat, 'longitude': lng}
+data = {'id': nearest_node_id, 'latitude': lat, 'longitude': lng}
 # To write to a file:
 with open("/Users/shuogong/VisionZeroWebApp/output.json", "w") as f:
     json.dump(data, f)

@@ -9,17 +9,19 @@
     <style>
         body { margin:0; padding:0; }
         #map { position:absolute; top:100px; bottom:0; width:100%; }
+        .div-inline{display: inline}
     </style>
 </head>
 <body>
-  <form action="myaction" method="post" id="form1">
-  Latitude:<br>
-  <input type="text" name="coordinate[lat]" id='lat'><br>
-  Longitude:<br>
-  <input type="text" name="coordinate[lng]" id='lng'>
-  </form>
-  <button type="submit" form="form1" value="Submit">Submit</button>
-
+  <div class = "div-inline">
+    <form action="myaction" method="post" id="form1">
+    Latitude:<br>
+    <input type="text" name="coordinate[lat]" id='lat'><br>
+    Longitude:<br>
+    <input type="text" name="coordinate[lng]" id='lng'>
+    </form>
+    <button type="submit" form="form1" value="Submit">Submit</button>
+  </div>
 
 
   <style type='text/css'>
