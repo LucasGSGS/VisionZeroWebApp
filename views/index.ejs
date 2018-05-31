@@ -41,9 +41,9 @@
   <div class='div-inline'>
       <form action="myaction" method="post" id="form1">
         <input id="origin-input" type="text" name="origin"
-          placeholder="Origin location">
+          placeholder="Origin location" required>
         <input id="destination-input" type="text" name="destination"
-            placeholder="Destination location">
+            placeholder="Destination location" required>
       </form>
       <button id="submit" button type="submit" form="form1" value="Submit">Submit</button>
   </div>
@@ -75,7 +75,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoibHVjYXNnc2dzIiwiYSI6ImNqaGdrdXEwMTFrNjgzMG4yZ
 var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v9',
-    center: [-73.99326785714284, 40.72278695238094],
+    center: <%= center %>,
     zoom: 12.5
 });
 
@@ -123,13 +123,20 @@ map.on('mousemove', function (e) {
 
 });
 
+var click_count = 0;
+
 map.on('click', function(e) {
   // get lat/lon of click
   var clickLat = e.lngLat["lat"];
   var clickLon = e.lngLat["lng"];
 
   // show in input box
-  document.getElementById("origin-input").value = [clickLon, clickLat];
+  if (click_count % 2 == 0){
+    document.getElementById("origin-input").value = [clickLon, clickLat];
+  } else {
+    document.getElementById("destination-input").value = [clickLon, clickLat];
+  }
+  click_count = click_count + 1;
 
   map.flyTo({
     center: [clickLon, clickLat],
@@ -140,7 +147,9 @@ map.on('click', function(e) {
   var marker = new mapboxgl.Marker()
     .setLngLat([clickLon, clickLat])
     .addTo(map);
+
 });
+
 
 </script>
 
