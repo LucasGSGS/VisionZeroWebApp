@@ -9,14 +9,12 @@
     <style>
         body { margin:0; padding:0; }
         #map { position:absolute; top:0; bottom:0; width:100%; }
-
         .div-inline {
             position: absolute;
             top: 10px;
             z-index: 1;
             width: 250px;
         }
-
         #origin-input,
         #destination-input {
           background-color: #fff;
@@ -29,11 +27,9 @@
           width: 250px;
           height: 25px;
         }
-
         #submit {
           margin-left: 12px;
         }
-
     </style>
 </head>
 <body>
@@ -78,9 +74,7 @@ var map = new mapboxgl.Map({
     center: <%= center %>,
     zoom: 12.5
 });
-
 map.on('load', function () {
-
     map.addLayer({
         "id": "route",
         "type": "line",
@@ -107,12 +101,7 @@ map.on('load', function () {
             "line-width": 8
         }
     });
-
 });
-
-
-
-
 map.on('mousemove', function (e) {
     document.getElementById('info').innerHTML =
         // e.point is the x, y coordinates of the mousemove event relative
@@ -120,37 +109,27 @@ map.on('mousemove', function (e) {
         // JSON.stringify(e.point) + '<br />' +
         // e.lngLat is the longitude, latitude geographical position of the event
         JSON.stringify(e.lngLat);
-
 });
-
 var click_count = 0;
-
 map.on('click', function(e) {
-  // get lat/lon of click
-  var clickLat = e.lngLat["lat"];
-  var clickLon = e.lngLat["lng"];
-
-  // show in input box
-  if (click_count % 2 == 0){
-    document.getElementById("origin-input").value = [clickLon, clickLat];
-  } else {
-    document.getElementById("destination-input").value = [clickLon, clickLat];
-  }
-  click_count = click_count + 1;
-
-  map.flyTo({
-    center: [clickLon, clickLat],
-    zoom: 12.5
-  });
-
-
-  var marker = new mapboxgl.Marker()
-    .setLngLat([clickLon, clickLat])
-    .addTo(map);
-
+    // get lat/lon of click
+    var clickLat = e.lngLat["lat"];
+    var clickLon = e.lngLat["lng"];
+    // show in input box
+    if (click_count % 2 == 0){
+      document.getElementById("origin-input").value = [clickLon, clickLat];
+    } else {
+      document.getElementById("destination-input").value = [clickLon, clickLat];
+    }
+    click_count = click_count + 1;
+    map.flyTo({
+      center: [clickLon, clickLat],
+      zoom: 12.5
+    });
+    var marker = new mapboxgl.Marker()
+      .setLngLat([clickLon, clickLat])
+      .addTo(map);
 });
-
-
 </script>
 
 </body>
