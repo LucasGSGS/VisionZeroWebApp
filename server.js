@@ -50,19 +50,10 @@ app.get("/", function (req, res) {
 // });
 
 app.post('/myaction', function (req, res) {
-    // res.render('the_template', { name: req.body.name });
-    // let inputLng = req.body.coordinate.lng;
-    // let inputLat = req.body.coordinate.lat;
-    // console.log(inputLng);
-    // console.log(inputLat);
-    let originlatlng = req.body.origin
-    let destlatlng = req.body.destination
-    // console.log(originlatlng)
-    // console.log(destlatlng)
-  // res.send('Longitude: ' + req.body.coordinate.lng + "\n" + 'Latitude: ' + req.body.coordinate.lat);
-
+  let originlatlng = req.body.origin
+  let destlatlng = req.body.destination
+  
   var PythonShell = require('python-shell');
-
   var options = {
     mode: 'text',
     pythonPath: '/Users/shuogong/anaconda3/envs/osmnx/bin/python3',
@@ -82,13 +73,12 @@ app.post('/myaction', function (req, res) {
       // console.log(JSON.stringify(obj));
       // console.log('The nearest node latlng: ')
       // console.log(JSON.stringify(obj));
-      console.log("New center is " + obj['center']);
-      console.log("Safetest Path is " + (JSON.stringify(obj['path_coordinates'])).replace(/\s/g,''));
-      res.render('index', {center: JSON.stringify(obj['center']), coordinates: (JSON.stringify(obj['path_coordinates'])).replace(/\s/g,'')})
+      console.log("New center is " + obj['safest_center']);
+      console.log("Safetest Path is " + (JSON.stringify(obj['safest_path_coordinates'])).replace(/\s/g,''));
+      res.render('index', {center: JSON.stringify(obj['safest_center']), coordinates: (JSON.stringify(obj['safest_path_coordinates'])).replace(/\s/g,'')})
       // res.render('index', {center: "obj['center']", coordinates: "obj['path_coordinates']"});
     });
   });
-  // res.end();
 });
 
 // app.get("/myaction", function (req, res) {
