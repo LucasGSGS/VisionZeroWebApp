@@ -24,6 +24,20 @@ app.get("/", function (req, res) {
  // res.send("Hey, I am responding to your request!");
  // ejs render automatically looks in the views folder
  res.render('index', {center: '[-73.99326785714284, 40.72278695238094]', coordinates: '[]'});
+
+ //prerun python file to get Manhattan_Graph
+ var PythonShell = require('python-shell');
+ var options = {
+   mode: 'text',
+   pythonPath: '/Users/shuogong/anaconda3/envs/osmnx/bin/python3',
+   pythonOptions: ['-u'], // get print results in real-time
+   scriptPath: '/Users/shuogong/VisionZeroWebApp/',
+   args: []
+ };
+ PythonShell.run('prerun.py', options, function (err, results) {
+   if (err) throw err;
+ });
+
 });
 
 // app.post('/', function(request, response){
@@ -43,8 +57,8 @@ app.post('/myaction', function (req, res) {
     // console.log(inputLat);
     let originlatlng = req.body.origin
     let destlatlng = req.body.destination
-    console.log(originlatlng)
-    console.log(destlatlng)
+    // console.log(originlatlng)
+    // console.log(destlatlng)
   // res.send('Longitude: ' + req.body.coordinate.lng + "\n" + 'Latitude: ' + req.body.coordinate.lat);
 
   var PythonShell = require('python-shell');

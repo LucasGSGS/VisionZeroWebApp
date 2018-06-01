@@ -7,6 +7,7 @@ import networkx as nx
 import json
 import os
 import pandas as pd
+from prerun import Manhattan_Graph
 
 # origin = sys.argv[1].strip().split(",")
 # dest = sys.argv[2].strip().split(",")
@@ -48,7 +49,7 @@ def path_and_distance(Graph, origin_node, destination_node):
 origin = sys.argv[1].strip().split(",")
 dest = sys.argv[2].strip().split(",")
 
-Manhattan_Graph = ox.graph_from_place('Manhattan Island, New York City, New York, USA', network_type='drive')
+# Manhattan_Graph = ox.graph_from_place('Manhattan Island, New York City, New York, USA', network_type='drive')
 
 origin_point = (float(origin[1]), float(origin[0]))
 origin_nearest_node_id = ox.get_nearest_node(Manhattan_Graph, origin_point)
