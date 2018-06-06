@@ -1,1 +1,6 @@
 node_modules/
+__pycache__/
+cache/
+.DS_Store
+output.json
+views/.DS_Store
