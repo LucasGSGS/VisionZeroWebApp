@@ -4,3 +4,4 @@ cache/
 .DS_Store
 output.json
 views/.DS_Store
+public/.DS_Store
