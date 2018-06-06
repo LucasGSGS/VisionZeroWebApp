@@ -22,8 +22,6 @@ These instructions will get you a copy of the project up and running on your loc
 
 
 
-
-
 ## Deployment
 
 Add additional notes about how to deploy this on a live system
