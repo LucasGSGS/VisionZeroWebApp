@@ -1,6 +1,6 @@
 # VisionZeroWebApp
 
-This is a web map app based on python(especially osmnx package), nodejs, expressjs, Angular to show paths switched between the shortest path and safest path.
+This is a web map app based on python3(especially osmnx package), nodejs, expressjs, Angular to show paths switched between the shortest path and safest path.
 
 ## Getting Started
 
@@ -8,49 +8,21 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+1. Install Node.js https://nodejs.org/en/
+2. Install OSMNX(a python3 package mainly used in this web app) https://github.com/gboeing/osmnx
+3. Clone the repository: https://github.com/LucasGSGS/VisionZeroWebApp.git
+4. Change directory into the project: cd VisionZeroWebApp
+5. Get an MapBox api from https://www.mapbox.com/ and substitute the mapboxgl.accessToken at line70 in index.ejs with your MapBox api
+6. Find your python3 path where you can run osmnx. If you did create an enviroment for osmnx, you can first open Terminal and run command "source activate osmnx" to change your current enviroment to osmnx then you can find your own python3 path by command "which python3". If you didn't create and extra enviroment for osmnx, which means you can straightly run osmnx in python3. You can get your path by "which python3". Then you can substitute all the "pythonPath" to the path you get. Then you also need to substitute all the "scriptPath" to the root path of VisionZeroWebApp in your own computer.
 
-```
-Give examples
-```
+## Deployment
+npm install
+npm start
+Your app should now be running on localhost:4000
 
-### Installing
 
-A step by step series of examples that tell you how to get a development env running
 
-Say what the step will be
 
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
 
 ## Deployment
 
@@ -58,30 +30,18 @@ Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [Node.js](https://nodejs.org/en/) - The web backend framework used
+* [Angular](https://angular.io/) - The web frontend framework used
+* [OSMNX](https://github.com/gboeing/osmnx) - The mainly used python3 package
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
+Please read [CONTRIBUTING.md](https://github.com/LucasGSGS/VisionZeroWebApp/graphs/contributors?from=2018-05-20&to=2018-06-06&type=c) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+* **Shuo Gong**
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
