@@ -40,7 +40,7 @@ Please read [CONTRIBUTING.md](https://github.com/LucasGSGS/VisionZeroWebApp/grap
 
 ## Authors
 
-* **Shuo Gong**
+* Shuo(Lucas) Gong
 
 ## License
 
