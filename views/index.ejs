@@ -6,6 +6,10 @@
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.css' rel='stylesheet' />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
     <style>
         body { margin:0; padding:0; }
         #map { position:absolute; top:0; bottom:0; width:100%; }
@@ -27,8 +31,57 @@
           width: 250px;
           height: 25px;
         }
+
+        .slidecontainer {
+            position: absolute;
+            margin-left: 12px;
+            padding: 0 11px 0 0;
+            width: 276px;
+            height: 100px;
+        }
+
+        .slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 15px;
+            background: #A9A9A9;
+            outline: none;
+            opacity: 0.9;
+            -webkit-transition: .2s;
+            transition: opacity .2s;
+        }
+
+        .slider:hover {
+            opacity: 1;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #4CAF50;
+            cursor: pointer;
+        }
+        p {
+          margin: 0;
+          padding: 0;
+          display: inline-block;
+        }
+        .left {
+          float: left;
+          text-align: left;
+        }
+        .center {
+          text-align: center;
+          width: 60%;
+        }
+        .right {
+          float: right;
+        }
         #submit {
           margin-left: 12px;
+          margin-top: 50px;
         }
     </style>
 </head>
@@ -41,6 +94,12 @@
         <input id="destination-input" type="text" name="destination"
             placeholder="Destination location" required>
       </form>
+      <div class="slidecontainer">
+        <input type="range" min="0.0" max="1.0" step="0.1" value="0.5" class="slider" id="myRange">
+        <p class="left">shortest</p>
+        <p class="center">Value: <span id="demo"></span></p>
+        <p class="right">safest</p>
+      </div>
       <button id="submit" button type="submit" form="form1" value="Submit">Submit</button>
   </div>
 
@@ -67,6 +126,14 @@
 
 
 <script>
+var slider = document.getElementById("myRange");
+var output = document.getElementById("demo");
+output.innerHTML = slider.value;
+
+slider.oninput = function() {
+  output.innerHTML = this.value;
+}
+
 mapboxgl.accessToken = 'pk.eyJ1IjoibHVjYXNnc2dzIiwiYSI6ImNqaGdrdXEwMTFrNjgzMG4yZDNuNGNuNjcifQ.5OaAi-be_cY8koxkRs076g';
 var map = new mapboxgl.Map({
     container: 'map',
