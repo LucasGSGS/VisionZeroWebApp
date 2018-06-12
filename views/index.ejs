@@ -31,15 +31,13 @@
           width: 250px;
           height: 25px;
         }
-
         .slidecontainer {
             position: absolute;
             margin-left: 12px;
-            padding: 0 11px 0 0;
+            padding: 10px 11px 0 0;
             width: 276px;
-            height: 100px;
+            height: 45px;
         }
-
         .slider {
             -webkit-appearance: none;
             width: 100%;
@@ -50,11 +48,9 @@
             -webkit-transition: .2s;
             transition: opacity .2s;
         }
-
         .slider:hover {
             opacity: 1;
         }
-
         .slider::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
@@ -93,13 +89,16 @@
           placeholder="Origin location" required>
         <input id="destination-input" type="text" name="destination"
             placeholder="Destination location" required>
+        <div class="slidecontainer">
+          <input type="range" min="0.0" max="1.0" step="0.1" value="0.5" class="slider" id="myRange" name="alpha"
+          onchange='document.getElementById("myRange").value'>
+          <p class="left">shortest</p>
+          <p class="center">Value: <span id="demo"></span></p>
+          <!-- console.log(<span id="demo"></span>) -->
+          <p class="right">safest</p>
+        </div>
       </form>
-      <div class="slidecontainer">
-        <input type="range" min="0.0" max="1.0" step="0.1" value="0.5" class="slider" id="myRange">
-        <p class="left">shortest</p>
-        <p class="center">Value: <span id="demo"></span></p>
-        <p class="right">safest</p>
-      </div>
+
       <button id="submit" button type="submit" form="form1" value="Submit">Submit</button>
   </div>
 
@@ -129,10 +128,10 @@
 var slider = document.getElementById("myRange");
 var output = document.getElementById("demo");
 output.innerHTML = slider.value;
-
 slider.oninput = function() {
   output.innerHTML = this.value;
 }
+// console.log(document.getElementById("myRange").value)
 
 mapboxgl.accessToken = 'pk.eyJ1IjoibHVjYXNnc2dzIiwiYSI6ImNqaGdrdXEwMTFrNjgzMG4yZDNuNGNuNjcifQ.5OaAi-be_cY8koxkRs076g';
 var map = new mapboxgl.Map({

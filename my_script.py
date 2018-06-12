@@ -45,18 +45,18 @@ def get_path_and_center(Graph, origin_node_id,dest_node_id):
 
 origin = sys.argv[1].strip().split(",")
 dest = sys.argv[2].strip().split(",")
+alph = float(sys.argv[3])
 # Manhattan_Graph = ox.graph_from_place('Manhattan Island, New York City, New York, USA', network_type='drive')
 origin_point = (float(origin[1]), float(origin[0]))
 origin_nearest_node_id = ox.get_nearest_node(Manhattan_Graph, origin_point)
 dest_point = (float(dest[1]), float(dest[0]))
 dest_nearest_node_id = ox.get_nearest_node(Manhattan_Graph, dest_point)
 collision_count = pd.read_csv("NY_collision_count.csv")
-modified_graph = penalized_graph(Manhattan_Graph,collision_count,1)
+modified_graph = penalized_graph(Manhattan_Graph,collision_count,alph)
 
-safest_latlng_list, safest_latlng_center = get_path_and_center(modified_graph, origin_nearest_node_id,dest_nearest_node_id)
-shortest_latlng_list, shortest_latlng_center = get_path_and_center(Manhattan_Graph, origin_nearest_node_id,dest_nearest_node_id)
+latlng_list, latlng_center = get_path_and_center(modified_graph, origin_nearest_node_id,dest_nearest_node_id)
 
-data = {'safest_path_coordinates': safest_latlng_list, 'safest_center': safest_latlng_center, 'shortest_path_coordinates': shortest_latlng_list, 'shortest_center': shortest_latlng_center}
+data = {'coordinates': latlng_list, 'center': latlng_center, 'alpha': alph}
 # To write to a file:
 with open("/Users/shuogong/VisionZeroWebApp/output.json", "w") as f:
     json.dump(data, f)

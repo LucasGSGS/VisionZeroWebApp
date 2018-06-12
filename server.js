@@ -31,10 +31,10 @@ app.get('/', function (req, res) {
 		mode: 'text',
 		pythonPath: '/Users/shuogong/anaconda3/envs/osmnx/bin/python3',
 		pythonOptions: ['-u'], // get print results in real-time
-		scriptPath: '/Users/shuogong/VisionZeroWebApp/',
+		scriptPath: '/Users/shuogong/VisionZeroWebApp',
 		args: []
 	}
-	PythonShell.run('prerun.py', options, function (err, results) {
+	PythonShell.run('prerun.py', options, function (err) {
 		if (err) throw err
 	})
 
@@ -52,19 +52,20 @@ app.get('/', function (req, res) {
 app.post('/myaction', function (req, res) {
 	let originlatlng = req.body.origin
 	let destlatlng = req.body.destination
+	let alpha = req.body.alpha
 
 	var PythonShell = require('python-shell')
 	var options = {
 		mode: 'text',
 		pythonPath: '/Users/shuogong/anaconda3/envs/osmnx/bin/python3',
 		pythonOptions: ['-u'], // get print results in real-time
-		scriptPath: '/Users/shuogong/VisionZeroWebApp/',
-		args: [originlatlng, destlatlng]
+		scriptPath: '/Users/shuogong/VisionZeroWebApp',
+		args: [originlatlng, destlatlng, alpha]
 	}
 
-	PythonShell.run('my_script.py', options, function (err) {
+	PythonShell.run('my_script.py', options, function (err, results) {
 		if (err) throw err
-		// console.log('results: %j', results);
+		// console.log('results: %j', results)
 		// results is an array consisting of messages collected during execution
 		var obj
 		fs.readFile('output.json', 'utf8', function (err, data) {
@@ -73,9 +74,10 @@ app.post('/myaction', function (req, res) {
 			// console.log(JSON.stringify(obj));
 			// console.log('The nearest node latlng: ')
 			// console.log(JSON.stringify(obj));
-			console.log('New center is ' + obj['safest_center'])
-			console.log('Safetest Path is ' + (JSON.stringify(obj['safest_path_coordinates'])).replace(/\s/g,''))
-			res.render('index', {center: JSON.stringify(obj['safest_center']), coordinates: (JSON.stringify(obj['safest_path_coordinates'])).replace(/\s/g,'')})
+			console.log('New center is ' + obj['center'])
+			console.log('Safetest Path is ' + (JSON.stringify(obj['coordinates'])).replace(/\s/g,''))
+			console.log('Alpha value is ' + (JSON.stringify(obj['alpha'])))
+			res.render('index', {center: JSON.stringify(obj['center']), coordinates: (JSON.stringify(obj['coordinates'])).replace(/\s/g,'')})
 			// res.render('index', {center: "obj['center']", coordinates: "obj['path_coordinates']"});
 		})
 	})
