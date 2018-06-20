@@ -1,3 +1,17 @@
+Code for visualization for understanding tradeoff between shortest and safest routes.
+
+Project Director:  Richard Sowers 
+* <r-sowers@illinois.edu>
+* <https://publish.illinois.edu/r-sowers/>
+
+Visualization: Lucas Gong
+* <shuog2@illinois.edu>
+
+Copyright 2018, University of Illinois Board of Trustees
+Richard Sowers
+
+
+
 # VisionZeroWebApp
 
 This is a web map app based on python3(especially osmnx package), nodejs, expressjs, Angular to show paths switched between the shortest path and safest path.
@@ -13,7 +27,7 @@ These instructions will get you a copy of the project up and running on your loc
 * Clone the repository: https://github.com/LucasGSGS/VisionZeroWebApp.git
 * Change directory into the project: cd VisionZeroWebApp
 * Get an MapBox api from https://www.mapbox.com/ and substitute the mapboxgl.accessToken at line70 in index.ejs with your MapBox api
-* Find your python3 path where you can run osmnx. If you did create an enviroment for osmnx, you can first open Terminal and run command "source activate osmnx" to change your current enviroment to osmnx then you can find your own python3 path by command "which python3". If you didn't create and extra enviroment for osmnx, which means you can straightly run osmnx in python3. You can get your path by "which python3". Then you can substitute all the "pythonPath" to the path you get. Then you also need to substitute all the "scriptPath" to the root path of VisionZeroWebApp in your own computer. And don't forget to change output.json path to your own root path in my_script.py.
+* Find your python3 path where you can run osmnx. If you did create an enviroment for osmnx, you can first open Terminal and run command "source activate osmnx" to change your current enviroment to osmnx then you can find your own python3 path by command "which python3". If you didn't create and extra enviroment for osmnx, which means you can straightly run osmnx in python3. You can get your path by "which python3". Then you can substitute all the "pythonPath" to the path you get. Then you also need to substitute all the "scriptPath" to the root path of VisionZeroWebApp in your own computer.
 
 ## Run web app locally
 * **npm install**
@@ -43,3 +57,7 @@ Please read [CONTRIBUTING.md](https://github.com/LucasGSGS/VisionZeroWebApp/grap
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+Python_Backend:
+* python pyserver.py runs backend API
+* nodeget.js tests pyserver.

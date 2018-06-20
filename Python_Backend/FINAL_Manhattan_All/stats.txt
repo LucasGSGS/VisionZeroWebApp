@@ -1,0 +1,4 @@
+Manhattan all
+746 trips
+10 values of alpha
+8.207486577777779 minutes
