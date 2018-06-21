@@ -1,17 +1,3 @@
-Code for visualization for understanding tradeoff between shortest and safest routes.
-
-Project Director:  Richard Sowers 
-* <r-sowers@illinois.edu>
-* <https://publish.illinois.edu/r-sowers/>
-
-Visualization: Lucas Gong
-* <shuog2@illinois.edu>
-
-Copyright 2018, University of Illinois Board of Trustees
-Richard Sowers
-
-
-
 # VisionZeroWebApp
 
 This is a web map app based on python3(especially osmnx package), nodejs, expressjs, Angular to show paths switched between the shortest path and safest path.
