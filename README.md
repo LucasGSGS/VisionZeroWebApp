@@ -12,13 +12,13 @@ These instructions will get you a copy of the project up and running on your loc
 * Install OSMNX(a python3 package mainly used in this web app) https://github.com/gboeing/osmnx
 * Clone the repository: https://github.com/LucasGSGS/VisionZeroWebApp.git
 * Change directory into the project: cd VisionZeroWebApp
-* Get an MapBox api from https://www.mapbox.com/ and substitute the mapboxgl.accessToken at line70 in index.ejs with your MapBox api
-* Find your python3 path where you can run osmnx. If you did create an enviroment for osmnx, you can first open Terminal and run command "source activate osmnx" to change your current enviroment to osmnx then you can find your own python3 path by command "which python3". If you didn't create and extra enviroment for osmnx, which means you can straightly run osmnx in python3. You can get your path by "which python3". Then you can substitute all the "pythonPath" to the path you get. Then you also need to substitute all the "scriptPath" to the root path of VisionZeroWebApp in your own computer.
+* Get an MapBox api from https://www.mapbox.com/ and substitute the mapboxgl.accessToken in index.ejs with your MapBox api
 
 ## Run web app locally
+* First go to Python_Backend and run pyserver then open another Terminal window run the following
 * **npm install**
 * **npm start**
-* Your app should now be running on localhost:4000
+* Your app should now be running on localhost:4000 now
 
 
 
@@ -29,6 +29,7 @@ Add additional notes about how to deploy this on a live system
 ## Built With
 
 * [Node.js](https://nodejs.org/en/) - The web backend framework used
+* [Python](https://docs.python.org/2/library/simplehttpserver.html) - Another server run before nodejs server, which keeps running OSMNX
 * [Angular](https://angular.io/) - The web frontend framework used
 * [OSMNX](https://github.com/gboeing/osmnx) - The mainly used python3 package
 
