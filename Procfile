@@ -1,1 +1,1 @@
-web: node server.js
+web: honcho -f ProcfileHoncho start
