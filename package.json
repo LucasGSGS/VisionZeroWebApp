@@ -4,8 +4,9 @@
   "description": "A web app based on nodejs and expressjs as backend.",
   "main": "index.js",
   "scripts": {
+    "postinstall": "cd client && npm install",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon /client/server.js",
+    "start": "nodemon server.js",
     "eslint": "eslint"
   },
   "repository": {
