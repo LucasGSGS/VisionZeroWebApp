@@ -79,7 +79,7 @@ app.post('/myaction', function (req, res) {
 			console.log('Alpha value is ' + (JSON.stringify(obj['alpha'])))
 			res.render('index', {center: JSON.stringify(obj['center']), coordinates: (JSON.stringify(obj['coordinates'])).replace(/\s/g,'')})
 		})
-	});
+	})
 
 
 	//console.log("url: "+url)

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title>Vision Zero</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.css' rel='stylesheet' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.css' rel='stylesheet' />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+  <div class="box">
+    <div class="row1">
+      <div class='div-inline'>
+          <form action="myaction" method="post" id="form1">
+            <input id="origin-input" type="text" name="origin"
+              placeholder="Origin location" required>
+            <input id="destination-input" type="text" name="destination"
+                placeholder="Destination location" required>
+            <div class="rowcol">
+              <div class="slidecontainer">
+                <input type="range" min="0.0" max="1.0" step="0.1" value="0.5" class="slider" id="myRange" name="alpha"
+                onchange='document.getElementById("myRange").value'>
+                <p class="left">shortest</p>
+                <p class="center">Value: <span id="demo"></span></p>
+                <p class="right">safest</p>
+              </div>
+              <div class="submitButton">
+                <button id="submit"  button type="submit" form="form1" class="btn btn-danger btn-lg">Submit</button>
+              </div>
+            </div>
+          </form>
+      </div>
+      <div class="brand">
+        <img src="/assets/images/illinois.png" alt="Paris" width="300" height="300">
+      </div>
+
+    </div>
+    <div class="row2">
+      <div class="mapContainer">
+        <div id='map'>
+          <div class="mapbox-attribution-container">
+           <a href="https://www.mapbox.com/about/maps/">© Mapbox | </a>
+           <a href="http://www.openstreetmap.org/copyright">© OpenStreetMap | </a>
+           <a href="https://github.com/LucasGSGS/VisionZeroWebApp">Anthored by Lucas Gong, Richard Sowers, and Patrick Li </a>
+          </div>
+        </div>
+        <span id='lat'></span>
+        <span id='lng'></span>
+        <!-- <pre id='info'></pre> -->
+      </div>
+    </div>
+  </div>
+
+
+
+<script>
+
+var slider = document.getElementById("myRange");
+var output = document.getElementById("demo");
+output.innerHTML = slider.value;
+slider.oninput = function() {
+  output.innerHTML = this.value;
+}
+// console.log(document.getElementById("myRange").value)
+
+mapboxgl.accessToken = 'pk.eyJ1IjoibHVjYXNnc2dzIiwiYSI6ImNqaGdrdXEwMTFrNjgzMG4yZDNuNGNuNjcifQ.5OaAi-be_cY8koxkRs076g';
+var map = new mapboxgl.Map({
+    attributionControl: false,
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v9',
+    center: <%= center %>,
+    zoom: 12.5
+  });
+  // .addControl(new mapboxgl.AttributionControl({
+  //
+  //       compact: true
+  // }));
+
+map.on('load', function () {
+    map.addLayer({
+        "id": "route",
+        "type": "line",
+        "source": {
+            "type": "geojson",
+            "data": {
+                "type": "Feature",
+                "properties": {},
+                "geometry": {
+                    "type": "LineString",
+                    "coordinates": <%= coordinates %>
+                    // [[-73.9947223, 40.7164964], [-73.9944558, 40.7169745], [-73.9954317, 40.7173076], [-73.9948124, 40.7184578], [-73.9943905, 40.7194567], [-73.9941321, 40.7200948], [-73.9939823, 40.7203048],
+                    // [-73.9937341, 40.7209205], [-73.9934649, 40.7216124], [-73.9932043, 40.7223416], [-73.9930317, 40.7228017], [-73.9925624, 40.7240528], [-73.99251, 40.724192], [-73.9922645, 40.7248794],
+                    // [-73.9921428, 40.7252143], [-73.9919974, 40.7256194], [-73.9917229, 40.7263629], [-73.9918561, 40.726419], [-73.99364, 40.727289], [-73.993147, 40.727867], [-73.9914198, 40.7298614]]
+                }
+            }
+        },
+        "layout": {
+            "line-join": "round",
+            "line-cap": "round"
+        },
+        "paint": {
+            "line-color": "#888",
+            "line-width": 8
+        }
+    });
+});
+// map.on('mousemove', function (e) {
+//     document.getElementById('info').innerHTML =
+//         JSON.stringify(e.lngLat);
+// });
+var click_count = 0;
+
+map.on('click', function(e) {
+    // get lat/lon of click
+    var clickLat = e.lngLat["lat"];
+    var clickLon = e.lngLat["lng"];
+
+    if (click_count == 0) {
+      document.getElementById("origin-input").value = [clickLon.toFixed(7), clickLat.toFixed(7)];
+      var marker = new mapboxgl.Marker({
+          draggable: true,
+          color: 'green'
+      })
+          .setLngLat([clickLon, clickLat])
+          .addTo(map);
+
+      function onDragEnd() {
+          var lngLat = marker.getLngLat();
+          document.getElementById("origin-input").value  = [lngLat.lng.toFixed(7), lngLat.lat.toFixed(7)];
+      }
+
+      marker.on('dragend', onDragEnd);
+
+    } else if (click_count == 1) {
+      document.getElementById("destination-input").value = [clickLon.toFixed(7), clickLat.toFixed(7)];
+      var marker = new mapboxgl.Marker({
+          draggable: true,
+          color: 'red'
+      })
+          .setLngLat([clickLon, clickLat])
+          .addTo(map);
+
+      function onDragEnd() {
+          var lngLat = marker.getLngLat();
+          document.getElementById("destination-input").value  = [lngLat.lng.toFixed(7), lngLat.lat.toFixed(7)];
+      }
+
+      marker.on('dragend', onDragEnd);
+
+
+    }
+    click_count = click_count + 1;
+});
+
+</script>
+
+</body>
+</html>
