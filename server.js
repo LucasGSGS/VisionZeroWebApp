@@ -61,9 +61,9 @@ app.get('/', function (req, res) {
 // });
 
 app.post('/myaction', function (req, res) {
-	let originlatlng = req.body.origin
-	let destlatlng = req.body.destination
-	let alpha = req.body.alpha
+	var originlatlng = req.body.origin
+	var destlatlng = req.body.destination
+	var alpha = req.body.alpha
 
 	const url='http://localhost:8081'
 	//query_params={origin:4163883691,destination:42435675,alpha:0.123};

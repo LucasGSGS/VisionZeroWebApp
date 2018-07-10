@@ -121,7 +121,7 @@ def get_path_and_center(Graph, origin_node_id,dest_node_id,alpha,weight):
   latlng_center.append(avg_lng)
   data = {'coordinates': latlng_list, 'center': latlng_center, 'alpha': alpha}
   # To write to a file:
-  with open("/Users/shuogong/VisionZeroWebApp/output.json", "w") as f:
+  with open("../output.json", "w") as f:
       json.dump(data, f)
 
 if __name__ == '__main__':
