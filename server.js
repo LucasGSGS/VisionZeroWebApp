@@ -14,7 +14,7 @@ app.use(express.static(__dirname + '/public'))
 
 // set the port of our application`
 // process.env.PORT lets the port be set by Heroku
-app.set('port', (process.env.PORT || 4000))
+app.set('port', (process.env.PORT || 80))
 
 // set the home page route
 app.get('/', function (req, res) {
@@ -31,8 +31,8 @@ app.post('/myaction', function (req, res) {
 	var destlatlng = req.body.destination
 	var alpha = req.body.alpha
 
-	const url='ec2-18-207-228-223.compute-1.amazonaws.com:8081'
-	//query_params={origin:4163883691,destination:42435675,alpha:0.123};
+	const url='http://ec2-18-207-228-223.compute-1.amazonaws.com:8081'
+
 	const query_params={origin:originlatlng,destination:destlatlng,alpha:alpha}
 	request({"url":url,qs:query_params}, function(err) {
 		if (err) throw err

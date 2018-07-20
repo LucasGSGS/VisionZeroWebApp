@@ -8,7 +8,7 @@ use: node nodeget
 */
 request=require("request");
 
-url="http://localhost:8081";
+url="http://ec2-18-207-228-223.compute-1.amazonaws.com:8081";
 //query_params={origin:4163883691,destination:42435675,alpha:0.123};
 query_params={origin:"-73.99448168636604,40.716945135773784",destination:"-73.98125094767447,40.73603263690694",alpha:0.8};
 
