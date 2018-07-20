@@ -65,7 +65,7 @@ app.post('/myaction', function (req, res) {
 	var destlatlng = req.body.destination
 	var alpha = req.body.alpha
 
-	const url='http://localhost:8081'
+	const url='ec2-18-207-228-223.compute-1.amazonaws.com:8081'
 	//query_params={origin:4163883691,destination:42435675,alpha:0.123};
 	const query_params={origin:originlatlng,destination:destlatlng,alpha:alpha}
 	request({"url":url,qs:query_params}, function(err) {
