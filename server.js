@@ -4,12 +4,7 @@ const bodyParser = require('body-parser')
 const app = express()
 const request=require('request')
 var fs = require('fs')
-// global.prerun = false
 
-// const _ = require('loadash');
-// const morgan = require('morgan');
-
-// set the view engine to ejs
 app.set('view engine', 'ejs')
 
 app.use(bodyParser.json())
@@ -27,38 +22,9 @@ app.get('/', function (req, res) {
 	// ejs render automatically looks in the views folder
 	res.render('index', {center: '[-73.99326785714284, 40.72278695238094]', coordinates: '[]'})
 
-	// // if ( !global.prerun ) {
-	// //prerun python file to get Manhattan_Graph
-	// var PythonShell = require('python-shell')
-	// var options = {
-	// 	mode: 'text',
-	// 	pythonPath: '/Users/shuogong/anaconda3/envs/osmnx/bin/python3',
-	// 	pythonOptions: ['-u'], // get print results in real-time
-	// 	scriptPath: '/Users/shuogong/VisionZeroWebApp',
-	// 	args: []
-	// }
-	// PythonShell.run('prerun.py', options, function (err) {
-	// 	if (err) throw err
-	// 	var obj
-	// 	fs.readFile('prerun.json', 'utf8', function (err, data) {
-	// 		if (err) throw err
-	// 		obj = JSON.parse(data)
-	// 		console.log('Prerun is ' + obj['prerun'])
-	// 	})
-	// })
-	// // global.prerun = true
-	// // }
 
 })
 
-// app.post('/', function(request, response){
-//     console.log(request.body.coordinate.lng);
-//     console.log(request.body.coordinate.lat);
-// });
-
-// app.post('/myaction', function(req, res) {
-//   res.send('You sent the longitude "' + req.body.coordinate.lng + '".');
-// });
 
 app.post('/myaction', function (req, res) {
 	var originlatlng = req.body.origin
@@ -80,42 +46,7 @@ app.post('/myaction', function (req, res) {
 			res.render('index', {center: JSON.stringify(obj['center']), coordinates: (JSON.stringify(obj['coordinates'])).replace(/\s/g,'')})
 		})
 	})
-
-
-	//console.log("url: "+url)
-
-	// var PythonShell = require('python-shell')
-	// var options = {
-	// 	mode: 'text',
-	// 	pythonPath: '/Users/shuogong/anaconda3/envs/osmnx/bin/python3',
-	// 	pythonOptions: ['-u'], // get print results in real-time
-	// 	scriptPath: '/Users/shuogong/VisionZeroWebApp',
-	// 	args: [originlatlng, destlatlng, alpha]
-	// }
-	//
-	// PythonShell.run('my_script.py', options, function (err, results) {
-	// 	if (err) throw err
-	// 	// console.log('results: %j', results)
-	// 	// results is an array consisting of messages collected during execution
-	// 	var obj
-	// 	fs.readFile('output.json', 'utf8', function (err, data) {
-	// 		if (err) throw err
-	// 		obj = JSON.parse(data)
-	// 		// console.log(JSON.stringify(obj));
-	// 		// console.log('The nearest node latlng: ')
-	// 		// console.log(JSON.stringify(obj));
-	// 		console.log('New center is ' + obj['center'])
-	// 		console.log('Safetest Path is ' + (JSON.stringify(obj['coordinates'])).replace(/\s/g,''))
-	// 		console.log('Alpha value is ' + (JSON.stringify(obj['alpha'])))
-	// 		res.render('index', {center: JSON.stringify(obj['center']), coordinates: (JSON.stringify(obj['coordinates'])).replace(/\s/g,'')})
-	// 		// res.render('index', {center: "obj['center']", coordinates: "obj['path_coordinates']"});
-	// 	})
-	// })
 })
-
-// app.get("/myaction", function (req, res) {
-//   res.status(200).send(req);
-// });
 
 //Start Server
 app.listen(app.get('port'), function() {
