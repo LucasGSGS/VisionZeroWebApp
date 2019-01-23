@@ -1,11 +1,3 @@
-# API code for Vision Zero
-# Richard Sowers <r-sowers@illinois.edu>
-# Copyright 2018 University of Illinois Board of Trustees. All Rights Reserved. Licensed under the MIT license
-#
-# use: python pyserver.py
-#
-# localhost:8081?origin=4163883691&destination=42435675&alpha=0.123
-# localhost:8081?origin=42435310&destination=42440710&alpha=0.123
 
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from urllib.parse import urlparse, urlsplit, parse_qs
